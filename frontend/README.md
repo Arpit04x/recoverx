@@ -1,4 +1,4 @@
-# Campus Lost & Found System - Frontend
+# RecoverX - Campus Lost & Found System - Frontend
 
 A simple, clean frontend for managing lost and found items on campus, built with React and Tailwind CSS.
 

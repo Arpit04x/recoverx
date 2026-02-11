@@ -48,7 +48,7 @@ const AdminLogin = () => {
                     Admin Sign In
                 </h2>
                 <p className="mt-2 text-center text-sm text-gray-400">
-                    Access the Lost & Found management portal
+                    Access the RecoverX management portal
                 </p>
             </div>
 

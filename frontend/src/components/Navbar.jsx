@@ -18,12 +18,12 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16 items-center">
                     {/* Logo */}
-                    <div className="flex-shrink-0 flex items-center gap-2">
-                        <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                            <span className="text-black font-bold text-lg">LF</span>
+                    <div className="flex-shrink-0 flex items-center gap-3 group cursor-pointer">
+                        <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-all duration-300">
+                            <span className="text-white font-black text-lg tracking-tighter">RX</span>
                         </div>
-                        <Link to="/" className="text-xl font-bold text-white tracking-tight hover:text-gray-300 transition-colors">
-                            Lost & Found
+                        <Link to="/" className="text-xl font-bold text-white tracking-tight group-hover:text-gray-200 transition-colors">
+                            RecoverX
                         </Link>
                     </div>
 

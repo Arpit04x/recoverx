@@ -34,7 +34,7 @@ function App() {
         <footer className="bg-black border-t border-white/10 mt-auto">
           <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <p className="text-center text-sm text-gray-500">
-              © {new Date().getFullYear()} College Lost & Found System. All rights reserved.
+              © {new Date().getFullYear()} RecoverX System. All rights reserved.
             </p>
           </div>
         </footer>
