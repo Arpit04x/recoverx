@@ -1,0 +1,46 @@
+-- Assuming PostgreSQL dialect to support the 'vector' type (e.g., via pgvector extension)
+CREATE EXTENSION IF NOT EXISTS vector;
+
+CREATE TABLE USERS (
+    user_id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    phone VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE ITEMS (
+    item_id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(10) NOT NULL CHECK (type IN ('lost', 'found')),
+    name VARCHAR(255),
+    color VARCHAR(100),
+    brand VARCHAR(100),
+    description TEXT,
+    location VARCHAR(255),
+    image_path VARCHAR(255),
+    embedding vector(1536), -- Assuming standard 1536 dims (e.g., OpenAI embeddings). Adjust if needed.
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_user
+        FOREIGN KEY(user_id) 
+        REFERENCES USERS(user_id)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE MATCHES (
+    lost_item_id INTEGER NOT NULL,
+    found_item_id INTEGER NOT NULL,
+    score FLOAT,
+    CONSTRAINT pk_matches PRIMARY KEY (lost_item_id, found_item_id),
+    CONSTRAINT fk_lost_item
+        FOREIGN KEY(lost_item_id) 
+        REFERENCES ITEMS(item_id)
+        ON DELETE CASCADE,
+    CONSTRAINT fk_found_item
+        FOREIGN KEY(found_item_id) 
+        REFERENCES ITEMS(item_id)
+        ON DELETE CASCADE
+);
+
+-- Indexes
+CREATE INDEX idx_items_user_id ON ITEMS(user_id);
+CREATE INDEX idx_items_type ON ITEMS(type);
+CREATE INDEX idx_matches_score ON MATCHES(score);
